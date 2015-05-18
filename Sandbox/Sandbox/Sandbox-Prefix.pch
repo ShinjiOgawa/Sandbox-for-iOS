@@ -1,0 +1,35 @@
+//
+//  Sandbox-Prefix.pch
+//  Sandbox
+//
+//  Created by Shinji Ogawa on 2015/05/18.
+//
+
+#ifndef Sandbox_Sandbox_Prefix_pch
+#define Sandbox_Sandbox_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#endif
+
+#ifdef DEBUG
+//#define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#define DLog(fmt, ...) NSLog(fmt, ##__VA_ARGS__);
+#else
+#define DLog(...)
+#endif
+
+// ALog always displays output regardless of the DEBUG alarm.
+#define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+#endif
